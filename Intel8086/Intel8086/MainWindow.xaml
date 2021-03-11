@@ -6,13 +6,13 @@
                        xmlns:local="clr-namespace:Intel8086"
                        xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                        mc:Ignorable="d"
-                       Title="Intel8086 Symulator" Height="450" Width="800">
+                       Title="Intel8086 Symulator" Height="250" Width="500">
 
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}" />
     </Window.Style>
 
-<StackPanel VerticalAlignment="Center">
+<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
     <Grid>
         <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Padding="0 10 0 0 ">Co chcesz zrobić?</TextBlock>
     </Grid>
