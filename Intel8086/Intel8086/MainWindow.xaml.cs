@@ -22,5 +22,9 @@ namespace Intel8086 {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void OperationTypeButton_OnClick(object sender, RoutedEventArgs e) {
+            throw new NotImplementedException();
+        }
     }
 }
