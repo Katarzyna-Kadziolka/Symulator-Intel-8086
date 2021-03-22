@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI.Controls;
-using Intel8086.Windows;
+
 
 namespace Intel8086 {
     /// <summary>
@@ -25,9 +25,6 @@ namespace Intel8086 {
             this.Closed += (sender, args) =>  Application.Current.Shutdown();
         }
 
-        private void OperationTypeButton_OnClick(object sender, RoutedEventArgs e) {
-            GeneralPurposeRegistersWindow window = new GeneralPurposeRegistersWindow();
-            window.Show();
-        }
+        
     }
 }
