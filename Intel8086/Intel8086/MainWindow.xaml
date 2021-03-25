@@ -5,103 +5,157 @@
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                        xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
                        mc:Ignorable="d"
-                       Title="Intel8086 Symulator" Height="450" Width="600">
+                       Title="Intel8086 Symulator" Height="500" Width="600">
     <StackPanel Margin="20">
-        <Grid >
-            <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"> Wprowadź dane</TextBlock>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 15" Grid.Row="0"
+                       Grid.ColumnSpan="8">
+                Wybierz działanie
+            </TextBlock>
+            <RadioButton Name="BasicOperationsRadioButton" Checked="BasicOperationsRadioButton_OnChecked" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0">
+                <TextBlock>Podstawowe operacje</TextBlock>
+            </RadioButton>
+            <RadioButton Name="MemoryOperationsRadioButton" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+                <TextBlock>Operacje z pamięcią</TextBlock>
+            </RadioButton>
+            <RadioButton Name="StackOperationsRadioButton" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2">
+                <TextBlock>Operacje ze stosem</TextBlock>
+            </RadioButton>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Name="AddressingModeTextBlock" Visibility="Hidden" HorizontalAlignment="Right" Margin="0 22 10 0" Grid.Row="0" Grid.Column="0">Tryb adesowania</TextBlock>
+            <ComboBox Name="AddressingModeComboBox" Visibility="Hidden" HorizontalAlignment="Left" Height="25" Width="150" Grid.Row="0" Grid.Column="1" Margin="0 20 0 0">
+                <ComboBoxItem>Indeksowy</ComboBoxItem>
+                <ComboBoxItem>Bazowy</ComboBoxItem>
+                <ComboBoxItem>Indeksowo-bazowy</ComboBoxItem>
+            </ComboBox>
+
+        </Grid>
+
+        <Grid>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 15 0 0"> Wprowadź dane</TextBlock>
         </Grid>
         <Grid Margin="0 25 0 0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="0">AX</TextBlock>
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="0">BX</TextBlock>
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="0">CX</TextBlock>
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="0">DX</TextBlock>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0"
+                       Grid.Column="0">
+                AX
+            </TextBlock>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1"
+                       Grid.Column="0">
+                BX
+            </TextBlock>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2"
+                       Grid.Column="0">
+                CX
+            </TextBlock>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3"
+                       Grid.Column="0">
+                DX
+            </TextBlock>
 
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1"/>
+            <TextBox Name="AxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" />
+            <TextBox Name="BxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" />
+            <TextBox Name="CxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" />
+            <TextBox Name="DxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="2">AH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="2">BH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="2">CH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="2">DH</TextBlock>
 
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3"/>
+            <TextBox Name="AhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" />
+            <TextBox Name="BhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" />
+            <TextBox Name="ChTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" />
+            <TextBox Name="DhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="4">AL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="4">BL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="4">CL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="4">DL</TextBlock>
 
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="5"/>
+            <TextBox Name="AlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5" />
+            <TextBox Name="BlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5" />
+            <TextBox Name="ClTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5" />
+            <TextBox Name="DlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="5" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="6">CS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="6">SS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="6">DS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="6">ES</TextBlock>
 
-            <TextBox Width="50" Height="20" Grid.Row="0" Grid.Column="7"/>
-            <TextBox Width="50" Height="20" Grid.Row="1" Grid.Column="7"/>
-            <TextBox Width="50" Height="20" Grid.Row="2" Grid.Column="7"/>
-            <TextBox Width="50" Height="20" Grid.Row="3" Grid.Column="7"/>
+            <TextBox Name="CsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="0" Grid.Column="7" />
+            <TextBox Name="SsTextBox" IsEnabled="False"  Width="50" Height="20" Grid.Row="1" Grid.Column="7" />
+            <TextBox Name="DsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="2" Grid.Column="7" />
+            <TextBox Name="EsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="3" Grid.Column="7" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="8">SI</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="8">DI</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="8">BP</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="8">SP</TextBlock>
 
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="9"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="9"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="9"/>
-            <TextBox Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="9"/>
+            <TextBox Name="SiTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="9" />
+            <TextBox Name="DiTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="9" />
+            <TextBox Name="BpTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="9" />
+            <TextBox Name="SpTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="9" />
 
+            <Button Name="RandomButton" Content="Random" Click="RandomButton_OnClick" Width="100" Margin="0 20 0 0"  Grid.Row="4" Grid.ColumnSpan="10"/>
         </Grid>
 
         <Grid Margin="0 25 0 0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Padding="0 0 0 10" Grid.Row="0" Grid.ColumnSpan="4">Ułóż polecenie</TextBlock>
-            <ComboBox Width="60" Height="20" Grid.Row="1" Grid.Column="0">
-                <ComboBoxItem>MOV</ComboBoxItem>
-                <ComboBoxItem>XCHG</ComboBoxItem>
-                <ComboBoxItem>PUSH</ComboBoxItem>
-                <ComboBoxItem>POP</ComboBoxItem>
-            </ComboBox>
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Padding="0 0 0 20" Grid.Row="0"
+                       Grid.ColumnSpan="4">
+                Ułóż polecenie
+            </TextBlock>
+            <ComboBox Name="FunctionComboBox" IsEnabled="False" HorizontalAlignment="Right" Width="60" Height="20" Grid.Row="1" Grid.Column="0" />
+            <ComboBox Name="ToComboBox" IsEnabled="False" HorizontalAlignment="Center" Width="100" Height="20" Grid.Row="1" Grid.Column="1" />
+            <ComboBox Name="FromCombobox" IsEnabled="False" HorizontalAlignment="Left" Width="60" Height="20" Grid.Row="1" Grid.Column="2" />
         </Grid>
     </StackPanel>
 </controls:AdonisWindow>

@@ -25,6 +25,39 @@ namespace Intel8086 {
             this.Closed += (sender, args) =>  Application.Current.Shutdown();
         }
 
-        
+
+        private void BasicOperationsRadioButton_OnChecked(object sender, RoutedEventArgs e) {
+            BasicMemoryTextBoxesActive();
+            BasicMemoryTextBoxesInsertStartValues();
+
+        }
+
+        private void BasicMemoryTextBoxesInsertStartValues() {
+            AxTextBox.Text = "00 00";
+            BxTextBox.Text = "00 00";
+            CxTextBox.Text = "00 00";
+            DxTextBox.Text = "00 00";
+        }
+
+        private void BasicMemoryTextBoxesActive() {
+            AxTextBox.IsEnabled = true;
+            BxTextBox.IsEnabled = true;
+            CxTextBox.IsEnabled = true;
+            DxTextBox.IsEnabled = true;
+
+            AhTextBox.IsEnabled = true;
+            BhTextBox.IsEnabled = true;
+            ChTextBox.IsEnabled = true;
+            DhTextBox.IsEnabled = true;
+
+            AlTextBox.IsEnabled = true;
+            BlTextBox.IsEnabled = true;
+            ClTextBox.IsEnabled = true;
+            DlTextBox.IsEnabled = true;
+        }
+
+        private void RandomButton_OnClick(object sender, RoutedEventArgs e) {
+            throw new NotImplementedException();
+        }
     }
 }
