@@ -72,7 +72,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0"
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Right"  Padding="0 0 12 7" Grid.Row="0"
                        Grid.Column="0">
                 AX
             </TextBlock>
@@ -89,50 +89,50 @@
                 DX
             </TextBlock>
 
-            <TextBox Name="AxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" />
-            <TextBox Name="BxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" />
-            <TextBox Name="CxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" />
-            <TextBox Name="DxTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" />
+            <TextBox Name="AxTextBox" FontSize="13" TextAlignment="Center" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Padding="0 0 0 0" />
+            <TextBox Name="BxTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Padding="0 0 0 0" />
+            <TextBox Name="CxTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Padding="0 0 0 0" />
+            <TextBox Name="DxTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Padding="0 0 0 0"/>
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="2">AH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="2">BH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="2">CH</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="2">DH</TextBlock>
 
-            <TextBox Name="AhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" />
-            <TextBox Name="BhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" />
-            <TextBox Name="ChTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" />
-            <TextBox Name="DhTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3" />
+            <TextBox Name="AhTextBox" TextChanged="ATextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" Padding="0 0 0 0" />
+            <TextBox Name="BhTextBox" TextChanged="BTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" Padding="0 0 0 0" />
+            <TextBox Name="ChTextBox" TextChanged="CTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" Padding="0 0 0 0" />
+            <TextBox Name="DhTextBox" TextChanged="DTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3" Padding="0 0 0 0" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="4">AL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="4">BL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="4">CL</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="4">DL</TextBlock>
 
-            <TextBox Name="AlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5" />
-            <TextBox Name="BlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5" />
-            <TextBox Name="ClTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5" />
-            <TextBox Name="DlTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="5" />
+            <TextBox Name="AlTextBox" TextChanged="ATextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="5" Padding="0 0 0 0" />
+            <TextBox Name="BlTextBox" TextChanged="BTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="5" Padding="0 0 0 0"/>
+            <TextBox Name="ClTextBox" TextChanged="CTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5" Padding="0 0 0 0" />
+            <TextBox Name="DlTextBox" TextChanged="DTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="5" Padding="0 0 0 0" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="6">CS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="6">SS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="6">DS</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="6">ES</TextBlock>
 
-            <TextBox Name="CsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="0" Grid.Column="7" />
-            <TextBox Name="SsTextBox" IsEnabled="False"  Width="50" Height="20" Grid.Row="1" Grid.Column="7" />
-            <TextBox Name="DsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="2" Grid.Column="7" />
-            <TextBox Name="EsTextBox" IsEnabled="False" Width="50" Height="20" Grid.Row="3" Grid.Column="7" />
+            <TextBox Name="CsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" Grid.Row="0" Grid.Column="7" />
+            <TextBox Name="SsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False"  Width="50" Height="20" Grid.Row="1" Grid.Column="7" />
+            <TextBox Name="DsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" Grid.Row="2" Grid.Column="7" />
+            <TextBox Name="EsTextBox" FontSize="13" TextAlignment="Center" IsEnabled="False" Width="50" Height="20" Grid.Row="3" Grid.Column="7" />
 
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="8">SI</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="8">DI</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="8">BP</TextBlock>
             <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="8">SP</TextBlock>
 
-            <TextBox Name="SiTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="9" />
-            <TextBox Name="DiTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="9" />
-            <TextBox Name="BpTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="9" />
-            <TextBox Name="SpTextBox" IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="9" />
+            <TextBox Name="SiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="9" Padding="0 0 0 0" />
+            <TextBox Name="DiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="9" Padding="0 0 0 0" />
+            <TextBox Name="BpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="9" Padding="0 0 0 0" />
+            <TextBox Name="SpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="9" Padding="0 0 0 0" />
 
             <Button Name="RandomButton" Content="Random" Click="RandomButton_OnClick" Width="100" Margin="0 20 0 0"  Grid.Row="4" Grid.ColumnSpan="10"/>
         </Grid>

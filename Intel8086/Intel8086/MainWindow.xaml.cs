@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI.Controls;
+using Intel8086.Enums;
 
 
 namespace Intel8086 {
@@ -29,22 +30,29 @@ namespace Intel8086 {
         private void BasicOperationsRadioButton_OnChecked(object sender, RoutedEventArgs e) {
             BasicMemoryTextBoxesActive();
             BasicMemoryTextBoxesInsertStartValues();
+            FunctionsComboBoxesActive();
+            FunctionComboBox.ItemsSource = Enum.GetValues(typeof(BasicOperations));
+        }
 
+        private void FunctionsComboBoxesActive() {
+            FunctionComboBox.IsEnabled = true;
+            ToComboBox.IsEnabled = true;
+            FromCombobox.IsEnabled = true;
         }
 
         private void BasicMemoryTextBoxesInsertStartValues() {
-            AxTextBox.Text = "00 00";
-            BxTextBox.Text = "00 00";
-            CxTextBox.Text = "00 00";
-            DxTextBox.Text = "00 00";
+            AhTextBox.Text = "00";
+            BhTextBox.Text = "00";
+            ChTextBox.Text = "00";
+            DhTextBox.Text = "00";
+
+            AlTextBox.Text = "00";
+            BlTextBox.Text = "00";
+            ClTextBox.Text = "00";
+            DlTextBox.Text = "00";
         }
 
         private void BasicMemoryTextBoxesActive() {
-            AxTextBox.IsEnabled = true;
-            BxTextBox.IsEnabled = true;
-            CxTextBox.IsEnabled = true;
-            DxTextBox.IsEnabled = true;
-
             AhTextBox.IsEnabled = true;
             BhTextBox.IsEnabled = true;
             ChTextBox.IsEnabled = true;
@@ -58,6 +66,22 @@ namespace Intel8086 {
 
         private void RandomButton_OnClick(object sender, RoutedEventArgs e) {
             throw new NotImplementedException();
+        }
+
+        private void ATextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
+            AxTextBox.Text = $"{AhTextBox.Text} {AlTextBox.Text}";
+        }
+
+        private void BTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
+            BxTextBox.Text = $"{BhTextBox.Text} {BlTextBox.Text}";
+        }
+
+        private void CTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
+            CxTextBox.Text = $"{ChTextBox.Text} {ClTextBox.Text}";
+        }
+
+        private void DTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
+            DxTextBox.Text = $"{DhTextBox.Text} {DlTextBox.Text}";
         }
     }
 }
