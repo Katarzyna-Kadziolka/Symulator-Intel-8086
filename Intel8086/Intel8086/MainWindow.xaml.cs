@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AdonisUI.Controls;
 using Intel8086.Enums;
 
 
@@ -23,7 +11,7 @@ namespace Intel8086 {
     public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
-            this.Closed += (sender, args) =>  Application.Current.Shutdown();
+            this.Closed += (sender, args) => Application.Current.Shutdown();
         }
 
 
@@ -32,6 +20,12 @@ namespace Intel8086 {
             BasicMemoryTextBoxesInsertStartValues();
             FunctionsComboBoxesActive();
             FunctionComboBox.ItemsSource = Enum.GetValues(typeof(BasicOperations));
+            ToComboBox.ItemsSource = Enum.GetValues(typeof(Registers));
+            FromCombobox.ItemsSource = Enum.GetValues(typeof(Registers));
+        }
+        private void MemoryOperationsRadioButton_OnChecked(object sender, RoutedEventArgs e) {
+            AddressingModeTextBlock.Visibility = Visibility.Visible;
+            AddressingModeComboBox.Visibility = Visibility.Visible;
         }
 
         private void FunctionsComboBoxesActive() {
@@ -83,5 +77,144 @@ namespace Intel8086 {
         private void DTextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
             DxTextBox.Text = $"{DhTextBox.Text} {DlTextBox.Text}";
         }
+
+        private void ExecuteButton_OnClick(object sender, RoutedEventArgs e) {
+            var fromValue = (Registers) FromCombobox.SelectedItem;
+            var toValue = (Registers) ToComboBox.SelectedItem;
+            var function = (BasicOperations) FunctionComboBox.SelectedItem;
+
+            if (BasicOperationsRadioButton.IsChecked == true) {
+                var textBoxes = GetCheckedTextBoxes(fromValue, toValue);
+                switch (function) {
+                    case BasicOperations.MOV:
+                        textBoxes[1].Text = textBoxes[0].Text;
+                        break;
+                    case BasicOperations.ECHG:
+                        var toText = textBoxes[1].Text;
+                        textBoxes[1].Text = textBoxes[0].Text;
+                        textBoxes[0].Text = toText;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
+
+            }
+        }
+
+        private TextBox[] GetCheckedTextBoxes(Registers fromValue, Registers toValue) {
+            TextBox fromTextBox;
+            TextBox toTextBox;
+            switch (fromValue) {
+                case Registers.AX:
+                    fromTextBox = AxTextBox;
+                    break;
+                case Registers.BX:
+                    fromTextBox = BxTextBox;
+                    break;
+                case Registers.CX:
+                    fromTextBox = CxTextBox;
+                    break;
+                case Registers.DX:
+                    fromTextBox = DxTextBox;
+                    break;
+                case Registers.AH:
+                    fromTextBox = AhTextBox;
+                    break;
+                case Registers.BH:
+                    fromTextBox = BhTextBox;
+                    break;
+                case Registers.CH:
+                    fromTextBox = ChTextBox;
+                    break;
+                case Registers.DH:
+                    fromTextBox = DhTextBox;
+                    break;
+                case Registers.AL:
+                    fromTextBox = AlTextBox;
+                    break;
+                case Registers.BL:
+                    fromTextBox = BlTextBox;
+                    break;
+                case Registers.CL:
+                    fromTextBox = ClTextBox;
+                    break;
+                case Registers.DL:
+                    fromTextBox = DlTextBox;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            switch (toValue) {
+                case Registers.AX:
+                    toTextBox = AxTextBox;
+                    break;
+                case Registers.BX:
+                    toTextBox = BxTextBox;
+                    break;
+                case Registers.CX:
+                    toTextBox = CxTextBox;
+                    break;
+                case Registers.DX:
+                    toTextBox = DxTextBox;
+                    break;
+                case Registers.AH:
+                    toTextBox = AhTextBox;
+                    break;
+                case Registers.BH:
+                    toTextBox = BhTextBox;
+                    break;
+                case Registers.CH:
+                    toTextBox = ChTextBox;
+                    break;
+                case Registers.DH:
+                    toTextBox = DhTextBox;
+                    break;
+                case Registers.AL:
+                    toTextBox = AlTextBox;
+                    break;
+                case Registers.BL:
+                    toTextBox = BlTextBox;
+                    break;
+                case Registers.CL:
+                    toTextBox = ClTextBox;
+                    break;
+                case Registers.DL:
+                    toTextBox = DlTextBox;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            return new TextBox[2] {fromTextBox, toTextBox};
+        }
+
+        private void AddressingModeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            BasicMemoryTextBoxesActive();
+            BasicMemoryTextBoxesInsertStartValues();
+            var checkedAddressingMode = (AddressingModes) AddressingModeComboBox.SelectedItem;
+            switch (checkedAddressingMode) {
+                case AddressingModes.Index:
+                    BpTextBox.IsEnabled = false;
+                    DiTextBox.IsEnabled = true;
+                    SiTextBox.IsEnabled = true;
+                    break;
+                case AddressingModes.Base:
+                    DiTextBox.IsEnabled = false;
+                    SiTextBox.IsEnabled = false;
+                    BpTextBox.IsEnabled = true;
+                    break;
+                case AddressingModes.IndexBase:
+                    DiTextBox.IsEnabled = true;
+                    SiTextBox.IsEnabled = true;
+                    BpTextBox.IsEnabled = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
+
+//Taski na kiedyś:
+//wyłączanie entry przy zmienie radiobutton

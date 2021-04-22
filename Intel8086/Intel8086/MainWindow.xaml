@@ -4,8 +4,10 @@
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                        xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                       xmlns:intel8086="clr-namespace:Intel8086"
+                       xmlns:local="clr-namespace:Intel8086.Enums"
                        mc:Ignorable="d"
-                       Title="Intel8086 Symulator" Height="500" Width="600">
+                       Title="Intel8086 Symulator" SizeToContent="Height" Width="600">
     <StackPanel Margin="20">
         <Grid>
             <Grid.RowDefinitions>
@@ -26,7 +28,7 @@
             <RadioButton Name="BasicOperationsRadioButton" Checked="BasicOperationsRadioButton_OnChecked" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0">
                 <TextBlock>Podstawowe operacje</TextBlock>
             </RadioButton>
-            <RadioButton Name="MemoryOperationsRadioButton" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <RadioButton Name="MemoryOperationsRadioButton" Checked="MemoryOperationsRadioButton_OnChecked" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
                 <TextBlock>Operacje z pamięcią</TextBlock>
             </RadioButton>
             <RadioButton Name="StackOperationsRadioButton" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2">
@@ -40,12 +42,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Name="AddressingModeTextBlock" Visibility="Hidden" HorizontalAlignment="Right" Margin="0 22 10 0" Grid.Row="0" Grid.Column="0">Tryb adesowania</TextBlock>
-            <ComboBox Name="AddressingModeComboBox" Visibility="Hidden" HorizontalAlignment="Left" Height="25" Width="150" Grid.Row="0" Grid.Column="1" Margin="0 20 0 0">
-                <ComboBoxItem>Indeksowy</ComboBoxItem>
-                <ComboBoxItem>Bazowy</ComboBoxItem>
-                <ComboBoxItem>Indeksowo-bazowy</ComboBoxItem>
-            </ComboBox>
-
+            <ComboBox Name="AddressingModeComboBox" ItemsSource="{Binding Source={intel8086:EnumBindingSource {x:Type local:AddressingModes}}}" 
+                      SelectionChanged="AddressingModeComboBox_OnSelectionChanged" Visibility="Hidden" HorizontalAlignment="Left" Height="25" Width="150" Grid.Row="0" Grid.Column="1" 
+                      Margin="0 20 0 0"/>
         </Grid>
 
         <Grid>
@@ -141,6 +140,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -149,13 +150,15 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Padding="0 0 0 20" Grid.Row="0"
-                       Grid.ColumnSpan="4">
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0" Padding="0 0 0 20" Grid.Row="0"
+                       Grid.ColumnSpan="3">
                 Ułóż polecenie
             </TextBlock>
-            <ComboBox Name="FunctionComboBox" IsEnabled="False" HorizontalAlignment="Right" Width="60" Height="20" Grid.Row="1" Grid.Column="0" />
-            <ComboBox Name="ToComboBox" IsEnabled="False" HorizontalAlignment="Center" Width="100" Height="20" Grid.Row="1" Grid.Column="1" />
-            <ComboBox Name="FromCombobox" IsEnabled="False" HorizontalAlignment="Left" Width="60" Height="20" Grid.Row="1" Grid.Column="2" />
+            <ComboBox Name="FunctionComboBox" IsEnabled="False" HorizontalAlignment="Right" Width="60" Height="25" Grid.Row="1" Grid.Column="0" />
+            <ComboBox Name="ToComboBox" IsEnabled="False" HorizontalAlignment="Center" Width="100" Height="25" Grid.Row="1" Grid.Column="1" />
+            <ComboBox Name="FromCombobox" IsEnabled="False" HorizontalAlignment="Left" Width="60" Height="25" Grid.Row="1" Grid.Column="2" />
+            <Button Name="ExecuteButton" Content="Wykonaj" Click="ExecuteButton_OnClick" FontWeight="Bold" HorizontalAlignment="Center" Width="200" Height="30" Margin="0 40 0 20 " Grid.Row="2" Grid.ColumnSpan="3" ></Button>
+            <Button Name="MemoryButton" Content="Pokaż zawartość pamięci" IsEnabled="False" HorizontalAlignment="Center" Width="200" Height="30" Grid.Row="3" Grid.ColumnSpan="3"></Button>
         </Grid>
     </StackPanel>
 </controls:AdonisWindow>
