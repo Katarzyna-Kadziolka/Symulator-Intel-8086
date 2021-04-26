@@ -1,5 +1,8 @@
 ﻿namespace Intel8086.Enums {
-    public enum Registers {
+    public enum IndexBaseAddresses {
+        BP,
+        DI,
+        SI,
         AX,
         BX,
         CX,

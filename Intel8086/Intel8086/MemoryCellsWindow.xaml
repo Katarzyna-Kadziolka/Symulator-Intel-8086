@@ -1,0 +1,23 @@
+﻿<controls:AdonisWindow x:Class="Intel8086.MemoryCellsWindow"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                       xmlns:local="clr-namespace:Intel8086"
+                       mc:Ignorable="d"
+                       Title="MemoryCells" SizeToContent="WidthAndHeight" MinHeight="300" >
+    <StackPanel Margin="20">
+        <Grid>
+            <ListView Name="MemoryListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Adres efektyny" Width="200" DisplayMemberBinding="{Binding EffectiveAddress}"/>
+                        <GridViewColumn Header="Przechowywane dane" Width="200" DisplayMemberBinding="{Binding Data}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </StackPanel>
+
+</controls:AdonisWindow>
