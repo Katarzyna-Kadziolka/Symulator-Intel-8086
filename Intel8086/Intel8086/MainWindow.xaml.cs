@@ -15,6 +15,7 @@ namespace Intel8086 {
         public MainWindow() {
             InitializeComponent();
             this.Closed += (sender, args) => Application.Current.Shutdown();
+            MemoryCells = new List<MemoryCell>();
         }
 
 
@@ -127,33 +128,147 @@ namespace Intel8086 {
                 MemoryButton.IsEnabled = true;
                 TextBox[] textBoxes;
                 var function = (BasicOperations) FunctionComboBox.SelectedItem;
-                if (Equals(AddressingModeComboBox.ItemsSource, Enum.GetValues(typeof(BaseAddresses)))) {
+                if (Equals(AddressingModeComboBox.SelectedItem, AddressingModes.Base)) {
                     var fromValue = (BaseAddresses) FromCombobox.SelectedItem;
                     var toValue = (BaseAddresses) ToComboBox.SelectedItem;
                     textBoxes = GetMemoryOperationsWithBaseAddressesTypeCheckedTextBoxes(toValue, fromValue);
+                    MoveToMemoryList(function, fromValue, toValue, textBoxes);
                 }
-                else if (Equals(AddressingModeComboBox.ItemsSource, Enum.GetValues(typeof(IndexAddresses)))) {
+                else if (Equals(AddressingModeComboBox.SelectedItem, AddressingModes.Index)) {
                     var fromValue = (IndexAddresses) FromCombobox.SelectedItem;
                     var toValue = (IndexAddresses) ToComboBox.SelectionBoxItem;
                     textBoxes = GetMemoryOperationsWithIndexAddressTypeCheckedTextBoxes(toValue, fromValue);
+                    MoveToMemoryList(function, fromValue, toValue, textBoxes);
                 }
-                else if (Equals(AddressingModeComboBox.ItemsSource, Enum.GetValues(typeof(IndexBaseAddresses)))) {
+                else if (Equals(AddressingModeComboBox.SelectedItem, AddressingModes.IndexBase)) {
                     var fromValue = (IndexBaseAddresses) FromCombobox.SelectedItem;
                     var toValue = (IndexBaseAddresses) ToComboBox.SelectionBoxItem;
                     textBoxes = GetMemoryOperationsWithIndexBaseAddressTypeCheckedTextBoxes(toValue, fromValue);
+                    MoveToMemoryList(function, fromValue, toValue, textBoxes);
                 }
 
-                switch (function) {
-                    case BasicOperations.MOV:
-                        break;
-                    case BasicOperations.ECHG:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
             }
         }
 
+        public void MoveToMemoryList(BasicOperations function, BaseAddresses fromValue, BaseAddresses toValue, TextBox[] textBoxes) {
+            var disp = DispTextBox.Text;
+            switch (function) {
+                case BasicOperations.MOV:
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    if (fromValue == BaseAddresses.BX || fromValue == BaseAddresses.BP) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text,
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].ToString(),
+                            EffectiveAddress = $"{textBoxes[1]}{disp}"
+                        });
+                    }
+                    break;
+                case BasicOperations.ECHG:
+                    var toText = textBoxes[1].Text;
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    textBoxes[0].Text = toText;
+                    if (fromValue == BaseAddresses.BX || fromValue == BaseAddresses.BP) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text.ToString(),
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].Text,
+                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                        });
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void MoveToMemoryList(BasicOperations function, IndexAddresses fromValue, IndexAddresses toValue, TextBox[] textBoxes) {
+            var disp = DispTextBox.Text;
+            switch (function) {
+                case BasicOperations.MOV:
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    if (fromValue == IndexAddresses.DI || fromValue == IndexAddresses.SI) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text,
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].Text,
+                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                        });
+                    }
+                    break;
+                case BasicOperations.ECHG:
+                    var toText = textBoxes[1].Text;
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    textBoxes[0].Text = toText;
+                    if (fromValue == IndexAddresses.DI || fromValue == IndexAddresses.SI) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text,
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].Text,
+                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                        });
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void MoveToMemoryList(BasicOperations function, IndexBaseAddresses fromValue, IndexBaseAddresses toValue, TextBox[] textBoxes) {
+            var disp = DispTextBox.Text;
+            switch (function) {
+                case BasicOperations.MOV:
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    if (fromValue == IndexBaseAddresses.DIplusBP || fromValue == IndexBaseAddresses.SIplusBP || fromValue == IndexBaseAddresses.DIplusBX || fromValue == IndexBaseAddresses.SIplusBX) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text,
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].Text,
+                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                        });
+                    }
+                    break;
+                case BasicOperations.ECHG:
+                    var toText = textBoxes[1].Text;
+                    textBoxes[1].Text = textBoxes[0].Text;
+                    textBoxes[0].Text = toText;
+                    if (fromValue == IndexBaseAddresses.DIplusBP || fromValue == IndexBaseAddresses.SIplusBP || fromValue == IndexBaseAddresses.DIplusBX || fromValue == IndexBaseAddresses.SIplusBX) {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[0].Text,
+                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                        });
+                    }
+                    else {
+                        MemoryCells.Add(new MemoryCell {
+                            Data = textBoxes[1].Text,
+                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                        });
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
         private void AddressingModeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
             ActivateBasicMemoryTextBoxes();
