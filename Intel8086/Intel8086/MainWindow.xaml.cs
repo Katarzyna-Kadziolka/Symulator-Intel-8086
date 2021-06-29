@@ -84,10 +84,6 @@ namespace Intel8086 {
             DlTextBox.IsEnabled = true;
         }
 
-        private void RandomButton_OnClick(object sender, RoutedEventArgs e) {
-            throw new NotImplementedException();
-        }
-
         private void ATextBox_OnTextChanged(object sender, TextChangedEventArgs e) {
             AxTextBox.Text = $"{AhTextBox.Text} {AlTextBox.Text}";
         }
@@ -148,6 +144,22 @@ namespace Intel8086 {
                 }
 
             }
+            else if (StackOperationsRadioButton.IsChecked == true) {
+                
+                var function = (StackOperations) FunctionComboBox.SelectedItem;
+                switch (function) {
+                    case StackOperations.POP:
+                        SpTextBox.Text = "0";
+                        SpTextBox.Text = $"{Convert.ToInt32(SpTextBox.Text)} + 2";
+                        break;
+                    case StackOperations.PUSH:
+                        SpTextBox.Text = "2";
+                        SpTextBox.Text = $"{Convert.ToInt32(SpTextBox.Text)} - 2";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
 
         public void MoveToMemoryList(BasicOperations function, BaseAddresses fromValue, BaseAddresses toValue, TextBox[] textBoxes) {
@@ -158,13 +170,13 @@ namespace Intel8086 {
                     if (fromValue == BaseAddresses.BX || fromValue == BaseAddresses.BP) {
                         MemoryCells.Add(new MemoryCell {
                             Data = textBoxes[0].Text,
-                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                            EffectiveAddress = $"{textBoxes[0].Text}"
                         });
                     }
                     else {
                         MemoryCells.Add(new MemoryCell {
                             Data = textBoxes[1].ToString(),
-                            EffectiveAddress = $"{textBoxes[1]}{disp}"
+                            EffectiveAddress = $"{textBoxes[1]}"
                         });
                     }
                     break;
@@ -175,13 +187,13 @@ namespace Intel8086 {
                     if (fromValue == BaseAddresses.BX || fromValue == BaseAddresses.BP) {
                         MemoryCells.Add(new MemoryCell {
                             Data = textBoxes[0].Text.ToString(),
-                            EffectiveAddress = $"{textBoxes[0].Text}{disp}"
+                            EffectiveAddress = $"{textBoxes[0].Text}"
                         });
                     }
                     else {
                         MemoryCells.Add(new MemoryCell {
                             Data = textBoxes[1].Text,
-                            EffectiveAddress = $"{textBoxes[1].Text}{disp}"
+                            EffectiveAddress = $"{textBoxes[1].Text}"
                         });
                     }
                     break;
@@ -459,6 +471,19 @@ namespace Intel8086 {
                 _ => throw new ArgumentOutOfRangeException()
             };
             return new TextBox[2] {fromTextBox, toTextBox};
+        }
+
+        private void StackOperationsRadioButton_OnChecked(object sender, RoutedEventArgs e) {
+            DeactivateMemoryOperationsElements();
+            ActivateBasicMemoryTextBoxes();
+            SetDefaultValuesIntoBasicMemoryTextBoxes();
+            FunctionsComboBoxesActive();
+            FromCombobox.IsEnabled = false;
+            SpTextBox.IsEnabled = true;
+            SpTextBox.Text = "00 00";
+            FunctionComboBox.ItemsSource = Enum.GetValues(typeof(StackOperations));
+            ToComboBox.ItemsSource = Enum.GetValues(typeof(Registers));
+            FromCombobox.ItemsSource = Enum.GetValues(typeof(Registers));
         }
     }
 }

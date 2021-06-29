@@ -31,7 +31,7 @@
             <RadioButton Name="MemoryOperationsRadioButton" Checked="MemoryOperationsRadioButton_OnChecked" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1">
                 <TextBlock>Operacje z pamięcią</TextBlock>
             </RadioButton>
-            <RadioButton Name="StackOperationsRadioButton" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2">
+            <RadioButton Name="StackOperationsRadioButton" Checked="StackOperationsRadioButton_OnChecked" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2">
                 <TextBlock>Operacje ze stosem</TextBlock>
             </RadioButton>
         </Grid>
@@ -59,8 +59,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -113,30 +111,19 @@
             <TextBox Name="ClTextBox" TextChanged="CTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="5" Padding="0 0 0 0" />
             <TextBox Name="DlTextBox" TextChanged="DTextBox_OnTextChanged" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="5" Padding="0 0 0 0" />
 
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="6">CS</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="6">SS</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="6">DS</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="6">ES</TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="6">SI</TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="6">DI</TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="6">BP</TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="6">SP</TextBlock>
 
-            <TextBox Name="CsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" Grid.Row="0" Grid.Column="7" />
-            <TextBox Name="SsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False"  Width="50" Height="20" Grid.Row="1" Grid.Column="7" />
-            <TextBox Name="DsTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" Grid.Row="2" Grid.Column="7" />
-            <TextBox Name="EsTextBox" FontSize="13" TextAlignment="Center" IsEnabled="False" Width="50" Height="20" Grid.Row="3" Grid.Column="7" />
+            <TextBox Name="SiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="7" Padding="0 0 0 0" />
+            <TextBox Name="DiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="7" Padding="0 0 0 0" />
+            <TextBox Name="BpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="7" Padding="0 0 0 0" />
+            <TextBox Name="SpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="7" Padding="0 0 0 0" />
 
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="0" Grid.Column="8">SI</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="1" Grid.Column="8">DI</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="2" Grid.Column="8">BP</TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Right" Padding="0 0 12 7" Grid.Row="3" Grid.Column="8">SP</TextBlock>
 
-            <TextBox Name="SiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="9" Padding="0 0 0 0" />
-            <TextBox Name="DiTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="9" Padding="0 0 0 0" />
-            <TextBox Name="BpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="9" Padding="0 0 0 0" />
-            <TextBox Name="SpTextBox" FontSize="13" TextAlignment="Center"  IsEnabled="False" Width="50" Height="20" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="9" Padding="0 0 0 0" />
-
-            <Button Name="RandomButton" HorizontalAlignment="Right" Content="Random" Click="RandomButton_OnClick" Width="100" Margin="0 20 55 0"  
-                    Grid.Row="4" Grid.ColumnSpan="7"/>
-            <TextBlock Name="DispTextBlock" FontSize="15" HorizontalAlignment="Right" Visibility="Hidden" Margin ="5 20 0 0" Grid.Row="4" Grid.Column="7">DISP</TextBlock>
-            <TextBox Name="DispTextBox" FontSize="13" Visibility="Hidden" TextAlignment="Center" Margin="0 20 0 0" Padding="0 0 0 0" Height="20" Width="80" Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2"/>
+            <TextBlock Name="DispTextBlock" FontSize="15" HorizontalAlignment="Right" Visibility="Hidden" Margin ="5 20 10 0" Grid.Row="4" Grid.Column="6">DISP</TextBlock>
+            <TextBox Name="DispTextBox" FontSize="13" Visibility="Hidden" TextAlignment="Center" Margin="0 20 0 0" Padding="0 0 0 0" Height="20" Width="80" Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2"/>
         </Grid>
 
         <Grid Margin="0 25 0 0">
@@ -153,7 +140,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 20 0 0" Padding="0 0 0 20" Grid.Row="0"
+            <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 0" Padding="0 0 0 20" Grid.Row="0"
                        Grid.ColumnSpan="3">
                 Ułóż polecenie
             </TextBlock>
